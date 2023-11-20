@@ -1,26 +1,21 @@
 <?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<package format="3">
+<package format="2">
   <name>dofbot</name>
-  <version>0.1.0</version>
-  <description>
-      ROS2 Package for Yahboom Dofbot
-  </description>
-  <maintainer email="rivascf@gmail.com">frivas</maintainer>
+  <version>0.1.1</version>
+  <description>ROS Noetic Package for Yahboom Dofbot</description>
   <license>Apache 2.0</license>
   <!-- <url type="website">TODO: Add project website url</url> -->
-  <!-- <url type="repository">TODO: Add github repository</url> -->
-  <!--<url type="bugtracker">TODO: Update url https://github.com/rivascf/dofbot/issues</url>-->
-  <author email="thlim@robotis.com">Darby Lim</author>
+  <url type="repository">https://github.com/arrg-mx/dofbot</url>
+  <url type="bugtracker">https://github.com/arrg-mx/dofbot/issues</url>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <author>Felipe Rivas</author>
+  <maintainer email="rivascf@gmail.com">frivas</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
   <!-- TODO: Add each Dofot package when be need it-->
-  <!-- <exec_depend>turtlebot3_bringup</exec_depend> -->
-  <exec_depend>dofbot_interfaces</exec_depend>
+  <!-- exec_depend>dofbot_interfaces</exec_depend -->
+  <!-- exec_depend>dofbot_config</exec_depend -->
   <exec_depend>dofbot_description</exec_depend>
-  <exec_depend>dofbot_config</exec_depend>
 
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
+  <export><metapackage/></export>
 </package>
