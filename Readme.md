@@ -2,12 +2,14 @@
 
 ## Contents
 
-1. [About this package](#about)
-1. [Package contents](#package-contents)
+- [Yahboom Dofbot ROS packages](#yahboom-dofbot-ros-packages)
+  - [Contents](#contents)
+  - [About](#about)
+  - [Package contents](#package-contents)
 
 ## About
 
-TODO: Add about information
+Yahboom Dofbot description package for ROS Noetic
 
 ## Package contents
 
