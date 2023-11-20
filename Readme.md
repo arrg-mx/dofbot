@@ -3,7 +3,11 @@
 ## Contents
 
 1. [About this package](#about)
-1. [Package contents](#package)
+1. [Package contents](#package-contents)
+
+## About
+
+TODO: Add about information
 
 ## Package contents
 
