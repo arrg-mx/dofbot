@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="gui" default="true"/>
+    <param name="use_gui" value="$(arg gui)" />
+
+    <include file="$(find dofbot_bringup)/launch/includes/description.launch.xml"/>
+
+	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dofbot_bringup)/rviz/dofbot_basic_config.rviz" if="$(arg gui)"/>
+</launch>
