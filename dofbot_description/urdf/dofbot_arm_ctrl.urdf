@@ -15,6 +15,8 @@
     <material name="silver_lake_blue">
         <color rgba="0.4666666666666667 0.5529411764705882 0.6627450980392157 1.0"/>
     </material>
+    <!--Dofbot Arm Base footprint (Dummy) -->
+    <link name="base_footprint" />
     <!--Dofbot Arm Base Link-->
     <link name="base_link">
         <visual>
@@ -30,7 +32,22 @@
                 <mesh filename="package://dofbot_description/meshes/dofbot/visual/base_link.STL"/>
             </geometry>
         </collision>
-    </link>
+        <inertial>
+            <origin xyz="-0.0304416859098744 4.23384368655101E-05 0.0448234503408059" rpy="0 0 0"/>
+            <mass value="1.0754239466482"/>
+            <inertia
+                    ixx="0.0208831789264125"
+                    ixy="2.4618093127858E-06"
+                    ixz="0.00616019290028669"
+                    iyy="0.0265621377486244"
+                    iyz="-1.10079499865282E-06"
+                    izz="0.0129535610833954"/>
+        </inertial>
+   </link>
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+    </joint>
     <!-- Dofbot Arm Link 01 -->
     <link name="arm_link_01">
         <inertial>
@@ -64,10 +81,10 @@
     <transmission name="trans_arm_joint_01">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_joint_01">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_joint_01_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>    
@@ -104,10 +121,10 @@
     <transmission name="trans_arm_joint_02">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_joint_02">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_joint_02_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -144,10 +161,10 @@
     <transmission name="trans_arm_joint_03">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_joint_03">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_joint_03_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -184,10 +201,10 @@
     <transmission name="trans_arm_joint_04">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_joint_04">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_joint_04_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -224,10 +241,10 @@
     <transmission name="trans_arm_joint_05">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="arm_joint_05">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="arm_joint_05_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -266,10 +283,10 @@
     <transmission name="trans_grip_joint">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="grip_joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="grip_joint_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -307,10 +324,10 @@
     <transmission name="trans_rfinger_joint_01">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="rfinger_joint_01">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="rfinger_joint_01_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -348,10 +365,10 @@
     <transmission name="trans_rfinger_joint_02">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="rfinger_joint_02">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="rfinger_joint_02_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -389,10 +406,10 @@
     <transmission name="trans_lfinger_grip_joint_01">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="lfinger_grip_joint_01">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="lfinger_grip_joint_01_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -430,10 +447,10 @@
     <transmission name="trans_lfinger_grip_joint_02">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="lfinger_grip_joint_02">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="lfinger_grip_joint_02_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -471,10 +488,10 @@
     <transmission name="trans_lfinger_grip_joint_03">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="lfinger_grip_joint_03">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="lfinger_grip_joint_03">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
@@ -509,6 +526,8 @@
     <!-- Gazebo ros control definition -->
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/dofbot_arm</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
         </plugin>
     </gazebo>
 
