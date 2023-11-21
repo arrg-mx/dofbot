@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<launch>
+	<rosparam file="$(find dofbot_bringup)/config/arm_controller.yaml" command="load" />
+	<arg name="arm_controllers" default="joint_state_controller
+										 arm_position_controller" />
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+		args="$(arg arm_controllers)" ns="/dofbot_arm" />
+	<param name="robot_description" textfile="$(find dofbot_description)/urdf/dofbot_arm_ctrl.urdf" />
+	<arg name="dofbot_initial_position" default="-J arm_joint_01 0.0
+												  -J arm_joint_02 0.0
+												  -J arm_joint_03 0.0
+												  -J arm_joint_04 0.0
+												  -J arm_joint_05 0.0"	/>					
+	<arg name="x" default="0.0"/>
+	<arg name="y" default="0.0"/>
+	<arg name="z" default="0.0"/>
+	<arg name="debug" default="false"/>
+	<arg name="gui" default="true"/>
+	<arg name="headless" default="false"/>
+	<arg name="paused" default="false" />
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="paused" value="$(arg paused)" />
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="headless" value="$(arg headless)" />
+		<arg name="use_sim_time" value="true" />
+	</include>
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -model dofbot_arm -param robot_description $(arg dofbot_initial_position)
+			  -x $(arg x) -y $(arg y) -z $(arg z) -unpause" />
+</launch>
