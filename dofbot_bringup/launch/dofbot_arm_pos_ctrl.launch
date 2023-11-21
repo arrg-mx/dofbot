@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<launch>
+	<rosparam file="$(find dofbot_bringup)/config/position_controller.yaml" command="load" />
+	<arg name="arm_controllers" default="joint_state_controller
+										 arm_position_controller" />
+	<!-- args="$(arg arm_controllers)" -->
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+		 ns="/dofbot_arm" args="joint_state_controller 
+											arm_joint_01_position_controller  
+											arm_joint_02_position_controller  
+											arm_joint_03_position_controller  
+											arm_joint_04_position_controller 
+											arm_joint_05_position_controller"/>
+	<param name="robot_description" textfile="$(find dofbot_description)/urdf/dofbot_arm_ctrl.urdf" />
+	<arg name="dofbot_initial_position" default="-J arm_joint_01 0.0
+												  -J arm_joint_02 1.0472
+												  -J arm_joint_03 -1.5708
+												  -J arm_joint_04 -1.5708
+												  -J arm_joint_05 0.0"	/>					
+	<arg name="x" default="0.0"/>
+	<arg name="y" default="0.0"/>
+	<arg name="z" default="0.0"/>
+	<arg name="debug" default="false"/>
+	<arg name="gui" default="true"/>
+	<arg name="headless" default="false"/>
+	<arg name="paused" default="false" />
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="paused" value="$(arg paused)" />
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="headless" value="$(arg headless)" />
+		<arg name="use_sim_time" value="true" />
+	</include>
+
+	<!-- convert joint states to TF transforms for rviz, etc -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen">
+		<remap from="/joint_states" to="/dofbot_arm/joint_states" />
+		<param name="publish_frequency" type="double" value="50.0" />
+	</node>											
+
+	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dofbot_bringup)/rviz/dofbot_basic_config.rviz" if="$(arg gui)"/>
+
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -model dofbot_arm -param robot_description $(arg dofbot_initial_position)
+			  -x $(arg x) -y $(arg y) -z $(arg z) -unpause" />
+
+
+</launch>
