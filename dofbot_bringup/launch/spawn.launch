@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<group ns="dofbot">
+		<!-- Robot model -->
+		<param name="robot_description" textfile="$(find dofbot_description)/urdf/dofbot_arm_ctrl.urdf"/>
+		<!-- Spawn robot -->
+		<node name="dofbot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+			args="-urdf -param robot_description -model dofbot -x 0 -y 0 -z 0"/>
+		<rosparam command="load" file="$(find dofbot_bringup)/config/joints.yaml"/>
+	</group>
+</launch>
