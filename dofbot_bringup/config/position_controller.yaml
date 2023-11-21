@@ -1,0 +1,35 @@
+dofbot_arm:
+  ## joint_state_controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  ## joint_names
+  joint_names: 
+    - arm_joint_01
+    - arm_joint_02
+    - arm_joint_03
+    - arm_joint_04
+    - arm_joint_05]
+  ## joint position controller  
+  #arm_position_controller:
+    # Position Controllers
+  arm_joint_01_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_joint_01
+    pid: {p: 100, i: 1, d: 1 }  
+  arm_joint_02_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_joint_02
+    pid: {p: 100, i: 1, d: 1 }  
+  arm_joint_03_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_joint_03  
+    pid: {p: 100, i: 1, d: 1 }  
+  arm_joint_04_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_joint_04  
+    pid: {p: 100, i: 1, d: 1 }  
+  arm_joint_05_position_controller:
+    type: position_controllers/JointPositionController
+    joint: arm_joint_05
+    pid: {p: 100, i: 1, d: 1 }  
