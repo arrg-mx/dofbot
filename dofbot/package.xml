@@ -17,6 +17,7 @@
   <!-- exec_depend>dofbot_config</exec_depend -->
   <exec_depend>dofbot_description</exec_depend>
   <exec_depend>dofbot_bringup</exec_depend>
+  <exec_depend>dofbot_moveit</exec_depend>
 
   <export><metapackage/></export>
 </package>
